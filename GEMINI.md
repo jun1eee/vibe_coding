@@ -320,7 +320,7 @@ CORS_ORIGIN=http://localhost:5173
 
 ```bash
 # client/.env
-VITE_API_BASE_URL=http://localhost:3000
+VITE_API_BASE_URL=http://localhost:3001
 ```
 
 ---
