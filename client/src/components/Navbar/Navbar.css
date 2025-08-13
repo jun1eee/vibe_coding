@@ -1,0 +1,30 @@
+/* Navbar.css */
+
+.navbar-transparent {
+    background: transparent !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1030; /* Bootstrap's standard z-index for fixed navbars */
+}
+
+/* Make links white and readable on a dark background */
+.navbar-transparent .nav-link,
+.navbar-transparent .navbar-brand {
+    color: black !important;
+    font-weight: bolder;
+}
+
+/* Use the project's point color for hover */
+.navbar-transparent .nav-link:hover {
+    color: #FE7E1D !important;
+    text-shadow: none;
+}
+
+/* Style the brand's span with the point color */
+.navbar-transparent .navbar-brand span {
+    color: #FE7E1D !important; /* Project point color */
+    font-weight: bold;
+    font-size: 1.5rem;
+}
