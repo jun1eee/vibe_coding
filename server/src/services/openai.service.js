@@ -4,11 +4,15 @@ const fs = require('fs');
 const path = require('path');
 const mime = require('mime-types');
 
-const openai = new OpenAI({
-  apiKey: env.openaiApiKey,
-});
-
 const getChatCompletion = async (userInput, imageUrl) => {
+  if (!env.openaiApiKey) {
+    return 'API키가 없습니다.';
+  }
+
+  const openai = new OpenAI({
+    apiKey: env.openaiApiKey,
+  });
+
   try {
     const content = [{ type: 'text', text: userInput }];
 
