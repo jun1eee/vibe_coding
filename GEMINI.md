@@ -74,13 +74,23 @@
 * 사용자의 질문에 대해 AI가 실시간으로 응답
 * API 호출 예시:
 
-```ts
+```javascript
 import OpenAI from "openai";
-const client = new OpenAI();
 
-const response = await client.responses.create({
-    model: "gpt-5-nano",
-    input: userInput
+const openai = new OpenAI();
+
+const response = await openai.responses.create({
+    model: "gpt-4.1-mini",
+    input: [{
+        role: "user",
+        content: [
+            { type: "input_text", text: "what's in this image?" },
+            {
+                type: "input_image",
+                image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg",
+            },
+        ],
+    }],
 });
 
 console.log(response.output_text);
@@ -198,116 +208,9 @@ console.log(response.output_text);
 ssafy-ai-chatbot/
 ├─ client/                  # React + TS + Redux + Bootstrap
 ├─ server/                  # Node.js (Vanilla JS) + Express
-├─ .env.example             # 공통 예시(루트에 두고 server/.env로 복사)
 ├─ .gitignore
-├─ README.md
-└─ package.json             # 루트 스크립트에서 동시 실행(dev) 지원
+└─ README.md             
 ```
-
----
-
-### client (프런트엔드)
-
-```bash
-client/
-├─ public/
-│  ├─ index.html
-│  └─ assets/
-│     └─ logo-ssafy.svg
-├─ src/
-│  ├─ app/
-│  │  ├─ store.ts
-│  │  └─ hooks.ts
-│  ├─ routes/
-│  │  └─ index.tsx
-│  ├─ pages/
-│  │  ├─ Landing/
-│  │  │  └─ LandingPage.tsx
-│  │  ├─ Login/
-│  │  │  └─ LoginPage.tsx
-│  │  ├─ Register/
-│  │  │  └─ RegisterPage.tsx
-│  │  └─ Chat/
-│  │     └─ ChatPage.tsx
-│  ├─ components/
-│  │  ├─ Navbar/
-│  │  │  └─ Navbar.tsx
-│  │  ├─ Chat/
-│  │  │  ├─ MessageBubble.tsx
-│  │  │  ├─ MessageList.tsx
-│  │  │  ├─ MessageInput.tsx
-│  │  │  └─ ImagePreview.tsx
-│  │  └─ Form/
-│  │     ├─ TextInput.tsx
-│  │     └─ Checkbox.tsx
-│  ├─ features/
-│  │  ├─ chat/
-│  │  │  ├─ chatSlice.ts
-│  │  │  └─ thunks.ts
-│  │  ├─ ui/
-│  │  │  └─ uiSlice.ts
-│  │  └─ auth/
-│  │     ├─ authSlice.ts
-│  │     └─ thunks.ts
-│  ├─ services/
-│  │  ├─ apiClient.ts
-│  │  ├─ chatApi.ts
-│  │  ├─ authApi.ts
-│  │  └─ uploadApi.ts
-│  ├─ styles/
-│  │  ├─ _variables.scss
-│  │  └─ index.scss
-│  ├─ types/
-│  │  └─ index.ts
-│  ├─ utils/
-│  │  └─ format.ts
-│  ├─ main.tsx
-│  └─ App.tsx
-├─ tsconfig.json
-├─ vite.config.ts
-└─ package.json
-```
-
----
-
-### server (백엔드)
-
-```bash
-server/
-├─ src/
-│  ├─ app.js
-│  ├─ server.js
-│  ├─ config/
-│  │  ├─ env.js
-│  │  └─ cors.js
-│  ├─ routes/
-│  │  ├─ chat.routes.js
-│  │  ├─ auth.routes.js
-│  │  └─ upload.routes.js
-│  ├─ controllers/
-│  │  ├─ chat.controller.js
-│  │  ├─ auth.controller.js
-│  │  └─ upload.controller.js
-│  ├─ services/
-│  │  ├─ openai.service.js
-│  │  └─ auth.service.js
-│  ├─ middleware/
-│  │  ├─ errorHandler.js
-│  │  ├─ validate.js
-│  │  └─ authGuard.js
-│  ├─ utils/
-│  │  ├─ logger.js
-│  │  └─ response.js
-│  ├─ validators/
-│  │  ├─ chat.schema.js
-│  │  └─ auth.schema.js
-│  └─ uploads/
-├─ .env
-├─ package.json
-└─ README.md
-```
-
----
 
 ## .env 예시
 
@@ -322,6 +225,3 @@ CORS_ORIGIN=http://localhost:5173
 # client/.env
 VITE_API_BASE_URL=http://localhost:3001
 ```
-
----
-
