@@ -37,7 +37,7 @@ const getChatCompletion = async (userInput, imageUrl) => {
     }
 
     const response = await openai.chat.completions.create({
-      model: 'gpt-4o', // Changed to a vision-capable model
+      model: 'gpt-5-nano', // Changed to a vision-capable model
       messages: [{ role: 'user', content }],
     });
     return response.choices[0].message.content;
