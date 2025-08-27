@@ -7,7 +7,7 @@
 1.  **서버 디렉토리로 이동**
 
     ```bash
-    cd server
+    cd vibe_coding/server
     ```
 
 2.  **필요한 패키지 설치**
@@ -18,7 +18,7 @@
 
 3.  **.env 파일 설정**
 
-    `.env_example` 파일을 `.env` 로 수정
+    `.env_example` 파일명을 `.env` 로 수정
     `.env` 파일을 열고, `OPENAI_API_KEY`에 본인의 OpenAI API 키를 입력합니다.
 
     ```
@@ -39,7 +39,7 @@
 1.  **클라이언트 디렉토리로 이동**
 
     ```bash
-    cd client
+    cd vibe_coding/client
     ```
 
 2.  **필요한 패키지 설치**
@@ -50,7 +50,7 @@
 
 3.  **.env 파일 설정**
 
-    `.env_example` 파일을 `.env` 로 수정
+    `.env_example` 파일명을 `.env` 로 수정
 
 
 4.  **클라이언트 실행**
